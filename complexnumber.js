@@ -132,3 +132,60 @@ numComplex.prototype.complexMod = function()
    var Mod = Math.hypot(this.real,this.imag);
        return Mod;
 }
+function complexExpForm(input)
+{
+   var a = newComplex(input),
+       angulus = Math.atan2(a.imag,a.real),
+       Mod = complexMod(input),
+       rep = Mod + "*" + "e^" + "(i " + angulus + ")";
+       return rep;
+}
+function complexSin(input)
+{
+   var a = newComplex(input),
+       sin = a.imag / complexMod(input);
+       return sin;
+}
+function complexCos(input)
+{
+   var a = newComplex(input)
+       cos = a.real / complexMod(input);
+       return cos;
+}
+function complexTan(input)
+{
+   var a = complexSin(input),
+       b = complexCos(input),
+       tan = a/b;
+       return tan;
+}
+function complexsquareRoot(input)
+{
+   var a = newComplex(input),
+       mod = complexMod(input),
+       angulus = Math.atan2(a.imag,a.real),
+       squareRoot = Math.sqrt(mod) + "* e^(i" + angulus + "+ k*pi)";
+       return squareRoot;
+}
+function complexExp(input)
+{
+   var a = newComplex(input),
+       ExpLiteral = "e^" + a.real + "(cos" + a.imag + "+isen" + a.imag + ")\n";
+       ExpValue =  Math.exp(a.real)*(Math.cos(a.imag)+Math.sin(a.imag)) + "i";
+       return String(ExpLiteral) + " " + String(ExpValue);
+}
+function complexLogN(input)
+{
+   var a = newComplex(input),
+       angulus = Math.atan2(a.imag,a.real),
+       r = complexMod(input),
+       logLiteral = Math.log(r) + " + i" + angulus +"\n";
+       logValue = (Math.log(r) + angulus) + "i";
+       return String(logLiteral) + " " + String(logValue);
+}
+function complexLog(input,base)
+{
+   var a = newComplex(input),
+       logA = complexLogN(input),
+       
+}
