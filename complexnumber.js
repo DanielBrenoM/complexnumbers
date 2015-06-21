@@ -331,3 +331,23 @@ numComplex.prototype.complexSinIn = function()
       sinIn = complexMult("-1",log);
       return sinIn;
 }
+numComplex.prototype.complexCosIn = function()
+{
+  var r = this.real*this.real - (this.imag*this.imag),
+      i = this.real*this.imag + this.imag*this.real,
+      mult = numComplex(r,i),
+      sum = complexSum(mult,1),
+      squareroot = complexsquareRoot(sum),
+      argument = this.complexSum(squareroot),
+      cosIn = complexLogN(argument);
+      return cosIn;
+}
+numComplex.prototype.complexTgIn = function()
+{
+  var sum = parseFloat(1+this.real) + "+" + this.imag + "i",
+      sub = parseFloat(1-this.real) + "-" + this.imag + "i",
+      div = complexDiv(sum,sub),
+      log = complexLogN(div)
+      //return String("1/2*(") + log + String(")");
+      return complexMult(1/2,log);
+}
