@@ -23,10 +23,10 @@ function numComplex(x,y)
 }
 function newComplex(input)
 {
-   	var fullComplex = /([+-]?\d+)\s*([+-])?\s*([+-]?\d+)i/.exec(input);
-   	var imaginary = /(^[+-]?\d+i)/.exec(input);
-      var real = /([+-]?\d+)/.exec(input);
-      var complexI = /([+-]?\d+)\s*([-+])?\s*i/.exec(input);
+   	var fullComplex = /([-+]?\d+\.?\d*|[-+]?\d*\.?\d+)\s*([-+])?\s*([-+]?\d+\.?\d*|[-+]?\d*\.?\d+)/.exec(input),
+   	    imaginary = /(^[+-]?\d+i)/.exec(input),
+        real = /([+-]?\d+)/.exec(input),
+        complexI = /([+-]?\d+)\s*([-+])?\s*i/.exec(input);
 
       if(typeof input == "number")
       {
@@ -65,26 +65,10 @@ function complexSum(first,second)
           i = a.imag + b.imag;
           return numComplex(r,i);
 }
-numComplex.prototype.complexSum = function(second)
-{
-   var a = this,
-       b = new newComplex(second),
-       r = a.real + b.real,
-       i = a.imag + b.imag;
-       return numComplex(r,i);
-}
 function complexSub(first,second)
 {
    var a = newComplex(first),
        b = newComplex(second),
-       r = a.real - b.real,
-       i = a.imag - b.imag;
-       return numComplex(r,i);
-}
-numComplex.prototype.complexSub = function(second)
-{
-   var a = this,
-       b = new newComplex(second),
        r = a.real - b.real,
        i = a.imag - b.imag;
        return numComplex(r,i);
@@ -97,26 +81,10 @@ function complexMult(first,second)
        i = a.real*b.imag + a.imag*b.real;
        return numComplex(r,i);
 }
-numComplex.prototype.complexMult = function(second)
-{
-   var a = this,
-       b = new newComplex(second),
-       r = a.real*b.real - (a.imag*b.imag),
-       i = a.real*b.imag + a.imag*b.real;
-       return numComplex(r,i);
-}
 function complexDiv(first,second)
 {
    var a = newComplex(first),
        b = newComplex(second),
-       r = (a.real*b.real + a.imag*b.imag)/(b.real*b.real+b.imag*b.imag),
-       i = (a.imag*b.real + a.real*b.imag)/(b.real*b.real+b.imag*b.imag);
-       return numComplex(r,i);
-}
-numComplex.prototype.complexDiv = function(second)
-{
-   var a = this,
-       b = new newComplex(second),
        r = (a.real*b.real + a.imag*b.imag)/(b.real*b.real+b.imag*b.imag),
        i = (a.imag*b.real + a.real*b.imag)/(b.real*b.real+b.imag*b.imag);
        return numComplex(r,i);
@@ -127,17 +95,12 @@ function complexMod(input)
        Mod = Math.hypot(a.real,a.imag);
        return Mod;    
 }
-numComplex.prototype.complexMod = function()
-{
-   var Mod = Math.hypot(this.real,this.imag);
-       return Mod;
-}
 function complexExpForm(input)
 {
    var a = newComplex(input),
        angulus = Math.atan2(a.imag,a.real),
        Mod = complexMod(input),
-       rep = Mod + "*" + "e^" + "(i " + angulus + ")";
+       rep = Mod + "*e^(i " + angulus + ")";
        return rep;
 }
 function complexSin(input)
@@ -179,13 +142,192 @@ function complexLogN(input)
    var a = newComplex(input),
        angulus = Math.atan2(a.imag,a.real),
        r = complexMod(input),
-       logLiteral = Math.log(r) + " + i" + angulus +"\n";
-       logValue = (Math.log(r) + angulus) + "i";
-       return String(logLiteral) + " " + String(logValue);
+       signal = (angulus>=0 ? "+" : "")
+       logLiteral = Math.log(r) + signal + angulus + "i";
+       return String(logLiteral);
 }
 function complexLog(input,base)
 {
    var a = newComplex(input),
        logA = complexLogN(input),
-       
+       logBase = Math.log(base),
+       log = String(logA) + "\n" + "_________________________________________" + "\n" + String(logBase);
+       //log = complexDiv(logA,logBase);
+       return log;
+}
+function complexTgh(input)
+{
+  var tgZ = complexTan(input),
+      tgH = "-i*" + String(tgZ);
+      //tgH = complexMult("-1i",tgZ);
+      return tgH;
+}
+function complexSinh(input)
+{
+  var argument = complexMult(input,"1i"),
+      sin = complexSin(argument),
+      sinh = "-i*" + String(sin);
+      //sinh = complexMult("-1i",sin);
+      return sinh;
+}
+function complexCosh(input)
+{
+  var argument = complexMult(input,"1i"),
+      cosh = complexCos(argument);
+      return String(cosh);
+}
+function complexSinIn(input)
+{
+  var mult = complexMult(input,input),
+      sub = complexSub("1",mult),
+      argument = complexsquareRoot(sub),
+      argument2 = complexMult("1i",input),
+      argument3 = complexSum(argument,argument2),
+      log = complexLogN(argument3),
+      sinIn = complexMult("-1",log);
+      return sinIn;
+}
+function complexCosIn(input)
+{
+  var mult = complexMult(input,input),
+      sum = complexSum(mult,"1"),
+      squareroot = complexsquareRoot(sum),
+      argument = complexSum(input,squareroot),
+      cosIn = complexLogN(argument);
+      return cosIn;
+}
+function complexTgIn(input)
+{
+  var sum = complexSum("1",input),
+      sub = complexSub("1",input),
+      div = complexDiv(sum,sub),
+      log = complexLogN(div);
+      //return String("1/2*(") + log + String(")");
+      return complexMult(1/2,log);
+}
+
+numComplex.prototype.complexSum = function(second)
+{
+   var a = this,
+       b = new newComplex(second),
+       r = a.real + b.real,
+       i = a.imag + b.imag;
+       return numComplex(r,i);
+}
+numComplex.prototype.complexSub = function(second)
+{
+   var a = this,
+       b = new newComplex(second),
+       r = a.real - b.real,
+       i = a.imag - b.imag;
+       return numComplex(r,i);
+}
+numComplex.prototype.complexMult = function(second)
+{
+   var a = this,
+       b = new newComplex(second),
+       r = a.real*b.real - (a.imag*b.imag),
+       i = a.real*b.imag + a.imag*b.real;
+       return numComplex(r,i);
+}
+numComplex.prototype.complexDiv = function(second)
+{
+   var a = this,
+       b = new newComplex(second),
+       r = (a.real*b.real + a.imag*b.imag)/(b.real*b.real+b.imag*b.imag),
+       i = (a.imag*b.real + a.real*b.imag)/(b.real*b.real+b.imag*b.imag);
+       return numComplex(r,i);
+}
+numComplex.prototype.complexMod = function()
+{
+   var Mod = Math.hypot(this.real,this.imag);
+       return Mod;
+}
+numComplex.prototype.complexExpForm = function()
+{
+  var angulus = Math.atan2(this.imag,this.real),
+      Mod = Math.hypot(this.real,this.imag),
+      rep = Mod + "*e^(i " + angulus + ")";
+      return rep;
+}
+numComplex.prototype.complexSin = function()
+{
+   var sin = this.imag/ Math.hypot(this.real,this.imag);
+   return sin;
+}
+numComplex.prototype.complexCos = function()
+{
+  var cos = this.real / Math.hypot(this.real,this.imag);
+  return cos;
+}
+numComplex.prototype.complexTan = function()
+{
+  var tan = (this.imag/Math.hypot(this.real,this.imag)) / (this.real / Math.hypot(this.real,this.imag));
+  return tan;
+}
+numComplex.prototype.complexsquareRoot = function()
+{
+  var mod = Math.hypot(this.real,this.imag),
+      angulus = Math.atan2(this.imag,this.real),
+      squareRoot = Math.sqrt(mod) + "* e^(i" + angulus + "+ k*pi)";
+      return squareRoot;
+}
+numComplex.prototype.complexExp = function()
+{
+  var ExpLiteral = "e^" + this.real + "(cos" + this.imag + "+isen" + this.imag + ")\n";
+      ExpValue =  Math.exp(this.real)*(Math.cos(this.imag)+Math.sin(this.imag)) + "i";
+      return String(ExpLiteral) + " " + String(ExpValue);
+}
+numComplex.prototype.complexLogN = function()
+{
+  var angulus = Math.atan2(this.imag,this.real),
+      r = Math.hypot(this.real,this.imag),
+      signal = (angulus>=0 ? "+" : "")
+      logLiteral = Math.log(r) + signal + angulus + "i";
+      return String(logLiteral);
+}
+numComplex.prototype.complexLog = function(base)
+{
+  var angulus = Math.atan2(this.imag,this.real),
+      r = Math.hypot(this.real,this.imag),
+      signal = (angulus>=0 ? "+" : "")
+      logLiteral = Math.log(r) + signal + angulus + "i"; 
+      logBase = Math.log(base),
+      log = String(logLiteral) + "\n" + "_________________________________________" + "\n" + String(logBase);
+    //log = complexDiv(logLiteral,logBase);
+       return log;
+}
+numComplex.prototype.complexTgh = function()
+{
+  var tgZ = (this.imag/Math.hypot(this.real,this.imag)) / (this.real / Math.hypot(this.real,this.imag));
+      tgH = "-i*" + String(tgZ);
+      //tgH = complexMult("-1i",tgZ);
+      return tgH;
+}
+numComplex.prototype.complexSinh = function()
+{
+  var argument = this.complexMult("1i"),
+      sin = complexSin(argument),
+      sinh = "-i*" + String(sin);
+    //sinh = complexMult("-1i",sin);
+      return sinh;
+}
+numComplex.prototype.complexCosh = function()
+{
+  var argument = this.complexMult("1i"),
+  cosh = complexCos(argument);
+  return String(cosh);
+}
+numComplex.prototype.complexSinIn = function()
+{
+  var r = this.real*this.real - (this.imag*this.imag),
+      i = this.real*this.imag + this.imag*this.real;
+      mult = numComplex(r,i),
+      sub = complexSub("1",mult),
+      argument = complexsquareRoot(sub),
+      argument2 = this.complexMult("1i"),
+      argument3 = complexSum(argument,argument2),
+      log = complexLogN(argument3),
+      sinIn = complexMult("-1",log);
+      return sinIn;
 }
