@@ -86,32 +86,79 @@ V. Prototypes
      Ex.: numcomp = newComplex("3+1i")
   Dessa forma "numcomp" vira uma variável do tipo número complexo a qual pode chamar todos os métodos desse tipo de variável, os quais são:
 
-     -numcomp.complexSum(second) : soma o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+    -numcomp.complexSum(second) : soma o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
 
-     -numcomp.complexSub(second) : subtrai o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+    -numcomp.complexSub(second) : subtrai o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
 
-     -numcomp.complexMult(second) : multiplica o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+    -numcomp.complexMult(second) : multiplica o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
 
-     -numcomp.complexDiv(second) : Divide o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+    -numcomp.complexDiv(second) : Divide o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
 
-     -numcomp.complexMod() : calcula o módulo do número complexo armazenado na variável. Retorna o valor numérico do módulo.
+    -numcomp.complexMod() : calcula o módulo do número complexo armazenado na variável. Retorna o valor numérico do módulo.
 
-     -numcomp.complexExpForm() : transforma o número complexo armazenado na variável em sua representação exponencial. Retorna em forma de string a representação
+    -numcomp.complexExpForm() : transforma o número complexo armazenado na variável em sua representação exponencial. Retorna em forma de string a representação
      exponencial do número complexo.
 
-     -numcomp.complexSin() : calcula o seno do número complexo armazenado na variável. Retorna o valor numérico do seno do número complexo.
+    -numcomp.complexSin() : calcula o seno do número complexo armazenado na variável. Retorna o valor numérico do seno do número complexo.
 
-     -numcomp.complexCos() : calcula o cosseno do número complexo armazenado na variável. Retorna o valor numérico do cosseno do número complexo.
+    -numcomp.complexCos() : calcula o cosseno do número complexo armazenado na variável. Retorna o valor numérico do cosseno do número complexo.
 
-     -numcomp.complexTan() : calcula a tangente do número complexo armazenado na variável. Retorna o valor numérico da tangente do número complexo.
+    -numcomp.complexTan() : calcula a tangente do número complexo armazenado na variável. Retorna o valor numérico da tangente do número complexo.
 
-     -numcomp.complexsquareRoot() : calcula a raiz quadrada do número complexo armazenado na variável. Retorna em forma de string a representação da raiz quadrada
-     do número complexo.
+    -numcomp.complexsquareRoot() : calcula a raiz quadrada do número complexo armazenado na variável. Retorna em forma de string a representação da raiz quadrada
+    do número complexo.
 
-     -numcomp.complexExp() : calcula a exponencial natural do número complexo armazenado na variável. Retorna em forma de string a representação da exponencial 
-     natural do número complexo.
+    -numcomp.complexExp() : calcula a exponencial natural do número complexo armazenado na variável. Retorna em forma de string a representação da exponencial 
+    natural do número complexo.
 
-     -numcomp.complexLogN() : calcula o logaritmo natural do número complexo armazenado na variável. Retorna em forma de string o valor do logaritmo natural do 
-     número complexo.
+    -numcomp.complexLogN() : calcula o logaritmo natural do número complexo armazenado na variável. Retorna em forma de string o valor do logaritmo natural do 
+    número complexo.
 
-     -numcomp.complexLog(base) : 
+    -numcomp.complexLog(base) : calcula o logaritmo do número complexo armazenado na variável na base desejada. Existem duas formas de retorno, a primeira ele
+    retorna em forma de string a representação numérica do logaritmo natural do numero complexo divido pelo logaritmo natural da base. A segunda ele retorna o
+    valor dessa divisão.
+
+    -numcomp.complexSinh() : calcula o seno hiperbólico do número complexo armazenado na variável.  Possui dois tipos de retorno, o primeiro retorna em forma
+    string a representação literal do seno hiperbólico do número complexo. O segundo ele retorna o valor numérico do seno hiperbólico, executando uma 
+    multiplicação complexa do seno do número com -i.
+
+    -numcomp.complexCosh() : calcula o cosseno hiperbólico do número complexo armazenado na variável. Retorna o valor numérico do cossen hiperbólico do número 
+    complexo.
+
+    -numcomp.complexTgh() : calcula a tangente hiperbólica do número complexo armazenado na variável. Possui dois tipos de retorno, o primeiro retorna em forma 
+    string a representação literal da tangente hiperbólica do número complexo. O segundo ele retorna o valor numérico da tangente hiperbólica, executando uma 
+    multiplicação complexa da tangente do número com -i.
+
+    -numcomp.complexSinIn() : calcula o valor do seno inverso do número complexo armazenado na variável. Retorna em forma de string o seno inverso do número 
+    complexo.
+
+    -numcomp.complexCosIn() : calcula o valor do cosseno inverso do número complexo armazenado na variável. Retorna em forma de string o cosseno inverso do número 
+    complexo.
+
+    -numcomp.complexTgIn() : calcula o valor da tangente inversa do número complexo armazenado na variável. Retorna em forma de string a tangente inversa do
+    número complexo.
+
+VI. Observações
+
+  -As três funções Seno,Cosseno e Tangente Inversas não retornam o ângulo do número complexo, mas sim um número complexo. Estas não são arcseno,arccos ou arctan.
+    Tais formas foram as ensinadas pelo professor em sala:
+            sen^(-1)z= -i*log(iz+(1-z)^(1/2))     cos^(-1)z= log(z+(z^2+1)^(1/2))   tg^(-1)z= 1/2 * log(1+z/1-z)
+
+  -As funções Logaritmo em base arbitrária, Seno Hiperbólico e Tangente Hiperbólica possuem dois tipos de retorno, porém ao serem executadas retornam apenas um 
+  dos dois, por definição elas estão retornando a forma literal de seus resultados, caso deseje o valor número, apenas tire o comentário de dentro da função e 
+  coloque naquele que é igual a ele, ou seja, ou a linha de cima ou a de baixo.
+
+
+Copyright 2015 Daniel Breno Menezes <danielbrenom@gmail.com>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
