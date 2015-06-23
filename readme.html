@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<head>  
+  <meta charset="utf-8">  
+  <title>Complex Numbers Library ReadMe</title>  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>Biblioteca JavaScript de Números Complexos/Complex Numbers JavaScript Library</h1>
+
+<h2>I. Intro</h2>
+  
+  <h4>A biblioteca foi desenvolvida por alunos do curso de Eng. Computação da UFPa - Universidade Federal do Pará com o intuito de oferecer suporte web de operações com números complexos.</h4>
+  <h4>Tais alunos são: Daniel Breno Guiomarino Menezes, Erick Modesto Campos, Israel de Barros Amorim, Suzane Santos dos Santos e Rodrigo Santos do Amor Divino Lima.</h4>
+  <h4>Neste readme estarão listadas todas as funções suportadas pela biblioteca.</h4>
+
+<h2>II. Operações Suportadas</h2>
+  
+  <h3>A biblioteca suporta as seguintes operações com números complexos:</h3>
+
+   <h4>-Soma  -Subtração  -Multiplicação  -Divisão</h4>
+
+   <h4>-Módulo  -Representação Exponencial </h4>
+
+   <h4>-Seno  -Cosseno  -Tangente</h4>
+
+   <h4>-Raiz Quadrada</h4>
+
+   <h4>-Exponencial Natural  -Logaritmo Natural  -Logaritmo em base C</h4>
+
+   <h4>-Seno Hiperbólico  -Cosseno Hiperbólico  -Tangente Hiperbólica</h4>
+
+   <h4>-Seno Inverso  -Cosseno Inverso  -Tangente Inversa</h4>
+
+<h2>III. Métodos de Entrada</h2>
+  
+  <h3>A biblioteca suporta os seguintes métodos de entrada de dados:</h3>
+
+    <h4>-Número Real (x) -Número Complexo Inteiro (x+iy)  -Número Imaginário (iy)  -Número Complexo "i" (x+i)  -Objeto ({r:x , i:y , eq: "x+iy"})</h4>
+  <h4>A biblioteca somente reconhece um número complexo inteiro se descrito por meio de string. Ex: "3+1i".</h4>
+
+<h2>IV. Funções</h2>
+
+  <h4>-numComplex(x,y) : função construtora de número complexo, tem como entradas x e y, que representam a parte real e a imaginária respectivamente. Retona em forma de string o número complexo.</h4>
+
+  <h4>-newComplex(input) : função que reconhece um número complexo em uma cadeia de caracteres " " ou reconhece um número se não forem caracteres. Retorna em forma de ojeto o número complexo.</h4>
+
+  <h4>-complexSum(first,second) : função que soma dois números complexos, tem como entrada dois números complexos. Retorna em forma de string o número complexo resultante.</h4>
+
+  <h4>-complexSub(first,second) : função que subtrai dois números complexos, tem como entrada dois números complexos. Retorna em forma de string o número complexo resultante.</h4>
+
+  <h4>-complexMult(first,second) : função que multiplica dois números complexos, tem como entrada dois números complexos. Retorna em forma de string o número complexo resultante.</h4>
+
+  <h4>-complexDiv(first,second) : função que divide dois números complexos, tem como entrada dois números complexos. Retorna em forma de string o número complexo resultante.</h4>
+
+  <h4>-complexMod(input) : função que calcula o módulo do número complexo, tem como entrada um número complexo. Retorna o valor númerico do módulo.</h4>
+
+  <h4>-complexExpForm(input) : função que tranforma o número complexo em sua forma/representação exponencial,tem como entrada um número complexo. Retorna em forma de string a representação exponencial do número complexo.</h4>
+
+  <h4>-complexSin(input) : função que calcula o seno do número complexo, tem como entrada um número complexo. Retorna o valor númerico do seno.</h4>
+
+  <h4>-complexCos(input) : função que calcula o cosseno do número complexo, tem como entrada um número complexo. Retorna o valor númerico do cosseno.</h4>
+
+  <h4>-complexTan(input) : função que calcula a tangente do número complexo, tem como entrada um número complexo. Retorna o valor númerico da tangente.</h4>
+
+  <h4>-complexsquareRoot(input) : função que calcula a raiz quadrada do número complexo, tem como entrada um número complexo. Retorna em forma de string a representação da raiz quadrada do número complexo.</h4>
+
+  <h4>-complexExp(input) : função que calcula a exponecial natural de um número complexo, tem como entrada um número complexo. Retorna em forma de string a representação da exponencial natural de um número complexo.</h4>
+
+  <h4>-complexLogN(input) : função que calcula o logaritmo natural de um número complexo, tem como entrada um número complexo. Retorna em forma de string o valor do logaritmo natural do número complexo.</h4>
+
+  <h4>-complexLog(input,base) : função que calcula o logaritmo de um número complexo em uma base arbitrária, tem como entrada um número complexo e uma base arbitrária. Existem duas formas de retorno, a primeira ele retorna em forma de string a representação numérica do logaritmo natural do numero complexo divido pelo logaritmo natural da base. A segunda ele retorna o valor dessa divisão.</h4>
+
+  <h4>-complexSinh(input) : função que calcula o seno hiperbólico de um número complexo, tem como entrada um número complexo. Possui dois tipos de retorno, o primeiro retorna em forma string a representação literal do seno hiperbólico do número complexo. O segundo ele retorna o valor numérico do seno hiperbólico, executando uma multiplicação complexa do seno do número com -i.</h4>
+
+  <h4>-complexCosh(input) : função que calcula o cosseno hiperbólico de um número complexo, tem como entrada um número complexo. Retorna o valor numérico do cossen hiperbólico do número complexo.</h4>
+
+  <h4>-complexTgh(input) : função que calcula a tangente hiperbólica de um número complexo, tem como entrada um número complexo. Possui dois tipos de retorno, o primeiro retorna em forma string a representação literal da tangente hiperbólica do número complexo. O segundo ele retorna o valor numérico da tangente hiperbólica, executando uma multiplicação complexa da tangente do número com -i.</h4>
+
+  <h4>-complexSinIn(input) : função que calcula o seno inverso do número complexo, tem como entrada um número complexo. Retorna em forma de string o seno inverso do número complexo.</h4>
+
+  <h4>-complexCosIn(input) : função que calcula o cosseno inverso do número complexo, tem como entrada um número complexo. Retorna em forma de string o cosseno inverso do número complexo.</h4>
+
+  <h4>-complexTgIn(input) : função que calcula a tangente inversa do número complexo, tem como entrada um número complexo. Retorna em forma de string a tangente inversa do número complexo.</h4>
+
+  <h4>*** OBSERVAÇÃO: 
+      As três funções Seno,Cosseno e Tangente Inversas não retornam o ângulo do número complexo, mas sim um número complexo. Estas não são arcseno,arccos ou arctan.Tais formas foram as ensinadas pelo professor em sala:
+            sen^(-1)z= -i*log(iz+(1-z)^(1/2))     cos^(-1)z= log(z+(z^2+1)^(1/2))   tg^(-1)z= 1/2 * log(1+z/1-z)   
+  ***</h4>
+
+<h2>V. Prototypes</h2>
+
+  <h3>A biblioteca oferece a possibilidade de operação com variáveis complexas do tipo:</h3>
+     <h4>Ex.: numcomp = newComplex("3+1i")</h4>
+  <h3>Dessa forma "numcomp" vira uma variável do tipo número complexo a qual pode chamar todos os métodos desse tipo de variável, os quais são:</h3>
+
+    <h4>-numcomp.complexSum(second) : soma o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+
+    <h4>-numcomp.complexSub(second) : subtrai o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+
+    <h4>-numcomp.complexMult(second) : multiplica o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+
+    <h4>-numcomp.complexDiv(second) : Divide o número complexo de entrada com o armazenado na variável. Retorna em forma de string o número complexo resultante.
+
+    <h4>-numcomp.complexMod() : calcula o módulo do número complexo armazenado na variável. Retorna o valor numérico do módulo.
+
+    <h4>-numcomp.complexExpForm() : transforma o número complexo armazenado na variável em sua representação exponencial. Retorna em forma de string a representação
+     exponencial do número complexo.
+
+    <h4>-numcomp.complexSin() : calcula o seno do número complexo armazenado na variável. Retorna o valor numérico do seno do número complexo.
+
+    <h4>-numcomp.complexCos() : calcula o cosseno do número complexo armazenado na variável. Retorna o valor numérico do cosseno do número complexo.
+
+    <h4>-numcomp.complexTan() : calcula a tangente do número complexo armazenado na variável. Retorna o valor numérico da tangente do número complexo.
+
+    <h4>-numcomp.complexsquareRoot() : calcula a raiz quadrada do número complexo armazenado na variável. Retorna em forma de string a representação da raiz quadrada
+    do número complexo.
+
+    <h4>-numcomp.complexExp() : calcula a exponencial natural do número complexo armazenado na variável. Retorna em forma de string a representação da exponencial 
+    natural do número complexo.
+
+    <h4>-numcomp.complexLogN() : calcula o logaritmo natural do número complexo armazenado na variável. Retorna em forma de string o valor do logaritmo natural do 
+    número complexo.
+
+    <h4>-numcomp.complexLog(base) : calcula o logaritmo do número complexo armazenado na variável na base desejada. Existem duas formas de retorno, a primeira ele
+    retorna em forma de string a representação numérica do logaritmo natural do numero complexo divido pelo logaritmo natural da base. A segunda ele retorna o
+    valor dessa divisão.
+
+    <h4>-numcomp.complexSinh() : calcula o seno hiperbólico do número complexo armazenado na variável.  Possui dois tipos de retorno, o primeiro retorna em forma
+    string a representação literal do seno hiperbólico do número complexo. O segundo ele retorna o valor numérico do seno hiperbólico, executando uma 
+    multiplicação complexa do seno do número com -i.
+
+    <h4>-numcomp.complexCosh() : calcula o cosseno hiperbólico do número complexo armazenado na variável. Retorna o valor numérico do cossen hiperbólico do número 
+    complexo.
+
+    <h4>-numcomp.complexTgh() : calcula a tangente hiperbólica do número complexo armazenado na variável. Possui dois tipos de retorno, o primeiro retorna em forma 
+    string a representação literal da tangente hiperbólica do número complexo. O segundo ele retorna o valor numérico da tangente hiperbólica, executando uma 
+    multiplicação complexa da tangente do número com -i.
+
+    <h4>-numcomp.complexSinIn() : calcula o valor do seno inverso do número complexo armazenado na variável. Retorna em forma de string o seno inverso do número 
+    complexo.
+
+    <h4>-numcomp.complexCosIn() : calcula o valor do cosseno inverso do número complexo armazenado na variável. Retorna em forma de string o cosseno inverso do número 
+    complexo.
+
+    <h4>-numcomp.complexTgIn() : calcula o valor da tangente inversa do número complexo armazenado na variável. Retorna em forma de string a tangente inversa do
+    número complexo.
+
+<h2>VI. Observações</h2>
+
+  <h3>-As três funções Seno,Cosseno e Tangente Inversas não retornam o ângulo do número complexo, mas sim um número complexo. Estas não são arcseno,arccos ou arctan.</h3>
+    <h3>Tais formas foram as ensinadas pelo professor em sala:
+            <h4>sen<sup>-1</sup>z= -i&times;log(iz+&radic;(1-z)) <h4>cos<sup>-1</sup>z= log(z+&radic;(z<sup>2</sup>+1))   <h4>tg<sup>-1</sup>z= &frac12; &times; log(<sup>1+z</sup>&frasl;<sub>1-z</sub>)</h3>
+
+  <h3>-As funções Logaritmo em base arbitrária, Seno Hiperbólico e Tangente Hiperbólica possuem dois tipos de retorno, porém ao serem executadas retornam apenas um 
+  dos dois, por definição elas estão retornando a forma literal de seus resultados, caso deseje o valor número, apenas tire o comentário de dentro da função e 
+  coloque naquele que é igual a ele, ou seja, ou a linha de cima ou a de baixo.<h3>
+
+
+<h4>Copyright 2015 Daniel Breno Menezes danielbrenom@gmail.com</h4><br />
+
+   <h4>Licensed under the Apache License, Version 2.0 (the "License");<br />
+   you may not use this file except in compliance with the License.<br />
+   You may obtain a copy of the License at</h4>
+
+       <h4>http://www.apache.org/licenses/LICENSE-2.0</h4>
+
+   <h4>Unless required by applicable law or agreed to in writing, software<br />
+   distributed under the License is distributed on an "AS IS" BASIS,<br />
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />
+   See the License for the specific language governing permissions and<br />
+   limitations under the License.</h4>
