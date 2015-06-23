@@ -56,6 +56,18 @@ function newComplex(input)
          var temp = new numComplex(complexI[1],parseFloat(i));
          return temp;
       }
+      else if (typeof input == "object" && input.r || input.i || input.eq) {
+        if (input.eq) 
+        {
+          return newComplex(input.eq);
+        }
+         else 
+         {
+          input.r = (input.r ? input.r : "0");
+          input.i = (input.i ? input.i : "0");
+          return numComplex(input.r, input.i);
+         }
+  }
 }
 function complexSum(first,second)
 {      
@@ -133,7 +145,7 @@ function complexsquareRoot(input)
 function complexExp(input)
 {
    var a = newComplex(input),
-       ExpLiteral = "e^" + a.real + "(cos" + a.imag + "+isen" + a.imag + ")\n";
+       ExpLiteral = "e^" + a.real + "(cos" + a.imag + "+isen" + a.imag + ")\n",
        ExpValue =  Math.exp(a.real)*(Math.cos(a.imag)+Math.sin(a.imag)) + "i";
        return String(ExpLiteral) + " " + String(ExpValue);
 }
@@ -142,7 +154,7 @@ function complexLogN(input)
    var a = newComplex(input),
        angulus = Math.atan2(a.imag,a.real),
        r = complexMod(input),
-       signal = (angulus>=0 ? "+" : "")
+       signal = (angulus>=0 ? "+" : ""),
        logLiteral = Math.log(r) + signal + angulus + "i";
        return String(logLiteral);
 }
@@ -291,7 +303,7 @@ numComplex.prototype.complexLog = function(base)
   var angulus = Math.atan2(this.imag,this.real),
       r = Math.hypot(this.real,this.imag),
       signal = (angulus>=0 ? "+" : "")
-      logLiteral = Math.log(r) + signal + angulus + "i"; 
+      logLiteral = Math.log(r) + signal + angulus + "i",
       logBase = Math.log(base),
       log = String(logLiteral) + "\n" + "_________________________________________" + "\n" + String(logBase);
     //log = complexDiv(logLiteral,logBase);
@@ -299,7 +311,7 @@ numComplex.prototype.complexLog = function(base)
 }
 numComplex.prototype.complexTgh = function()
 {
-  var tgZ = (this.imag/Math.hypot(this.real,this.imag)) / (this.real / Math.hypot(this.real,this.imag));
+  var tgZ = (this.imag/Math.hypot(this.real,this.imag)) / (this.real / Math.hypot(this.real,this.imag)),
       tgH = "-i*" + String(tgZ);
       //tgH = complexMult("-1i",tgZ);
       return tgH;
@@ -321,7 +333,7 @@ numComplex.prototype.complexCosh = function()
 numComplex.prototype.complexSinIn = function()
 {
   var r = this.real*this.real - (this.imag*this.imag),
-      i = this.real*this.imag + this.imag*this.real;
+      i = this.real*this.imag + this.imag*this.real,
       mult = numComplex(r,i),
       sub = complexSub("1",mult),
       argument = complexsquareRoot(sub),
@@ -347,7 +359,7 @@ numComplex.prototype.complexTgIn = function()
   var sum = parseFloat(1+this.real) + "+" + this.imag + "i",
       sub = parseFloat(1-this.real) + "-" + this.imag + "i",
       div = complexDiv(sum,sub),
-      log = complexLogN(div)
+      log = complexLogN(div);
       //return String("1/2*(") + log + String(")");
       return complexMult(1/2,log);
 }
