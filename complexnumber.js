@@ -110,7 +110,7 @@ function complexMod(input)
 function complexExpForm(input)
 {
    var a = newComplex(input),
-       angulus = Math.atan2(a.imag,a.real),
+       angulus = (180*Math.atan2(a.imag,a.real))/Math.PI,
        Mod = complexMod(input),
        rep = Mod + "*e^(i " + angulus + ")";
        return rep;
@@ -138,7 +138,7 @@ function complexsquareRoot(input)
 {
    var a = newComplex(input),
        mod = complexMod(input),
-       angulus = Math.atan2(a.imag,a.real),
+       angulus = (180*Math.atan2(a.imag,a.real))/Math.PI,
        squareRoot = Math.sqrt(mod) + "* e^(i" + angulus + "+ k*pi)";
        return squareRoot;
 }
@@ -152,7 +152,7 @@ function complexExp(input)
 function complexLogN(input)
 {
    var a = newComplex(input),
-       angulus = Math.atan2(a.imag,a.real),
+       angulus = (180*Math.atan2(a.imag,a.real))/Math.PI,
        r = complexMod(input),
        signal = (angulus>=0 ? "+" : ""),
        logLiteral = Math.log(r) + signal + angulus + "i";
@@ -257,7 +257,7 @@ numComplex.prototype.complexMod = function()
 }
 numComplex.prototype.complexExpForm = function()
 {
-  var angulus = Math.atan2(this.imag,this.real),
+  var angulus = (180*Math.atan2(this.imag,this.real))/Math.PI,
       Mod = Math.hypot(this.real,this.imag),
       rep = Mod + "*e^(i " + angulus + ")";
       return rep;
@@ -280,7 +280,7 @@ numComplex.prototype.complexTan = function()
 numComplex.prototype.complexsquareRoot = function()
 {
   var mod = Math.hypot(this.real,this.imag),
-      angulus = Math.atan2(this.imag,this.real),
+      angulus = (180*Math.atan2(this.imag,this.real))/Math.PI,
       squareRoot = Math.sqrt(mod) + "* e^(i" + angulus + "+ k*pi)";
       return squareRoot;
 }
@@ -292,7 +292,7 @@ numComplex.prototype.complexExp = function()
 }
 numComplex.prototype.complexLogN = function()
 {
-  var angulus = Math.atan2(this.imag,this.real),
+  var angulus = (180*Math.atan2(this.imag,this.real))/Math.PI,
       r = Math.hypot(this.real,this.imag),
       signal = (angulus>=0 ? "+" : "")
       logLiteral = Math.log(r) + signal + angulus + "i";
@@ -300,7 +300,7 @@ numComplex.prototype.complexLogN = function()
 }
 numComplex.prototype.complexLog = function(base)
 {
-  var angulus = Math.atan2(this.imag,this.real),
+  var angulus = (180*Math.atan2(this.imag,this.real))/Math.PI,
       r = Math.hypot(this.real,this.imag),
       signal = (angulus>=0 ? "+" : "")
       logLiteral = Math.log(r) + signal + angulus + "i",
