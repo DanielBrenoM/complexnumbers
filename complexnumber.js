@@ -146,8 +146,8 @@ function complexExp(input)
 {
    var a = newComplex(input),
        ExpLiteral = "e^" + a.real + "(cos" + a.imag + "+isen" + a.imag + ")\n",
-       ExpValue =  Math.exp(a.real)*(Math.cos(a.imag)+Math.sin(a.imag)) + "i";
-       return String(ExpLiteral) + " " + String(ExpValue);
+       ExpValue =  Math.exp(a.real*Math.cos(a.imag)+Math.sin(a.imag)) + "i";
+       return String(ExpLiteral) /*+ " " + String(ExpValue)*/;
 }
 function complexLogN(input)
 {
